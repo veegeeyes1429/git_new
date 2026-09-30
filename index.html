@@ -7,7 +7,452 @@
         vanakkam  makkale
     </title>
 </head>
-<body>
-    <h1>vanakkam makkale</h1>
+    <body>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 200, 0.15), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(100, 80, 255, 0.18), transparent 30%),
+        #050509;
+      overflow-x: hidden;
+    }
+
+    /* Animated background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, #00ffd5, #6c5ce7);
+      filter: blur(180px);
+      opacity: 0.12;
+      top: -150px;
+      left: -150px;
+      z-index: -1;
+      animation: float 10s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: #6c5ce7;
+      filter: blur(180px);
+      opacity: 0.12;
+      right: -100px;
+      bottom: -100px;
+      z-index: -1;
+      animation: float 12s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes float {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(80px, 60px);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      width: 90%;
+      max-width: 1200px;
+      margin: 25px auto;
+      padding: 16px 22px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #00ffd5;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffd5;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 75vh;
+      max-width: 1100px;
+      margin: auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .badge {
+      padding: 8px 16px;
+      border-radius: 50px;
+
+      background: rgba(0, 255, 213, 0.08);
+      border: 1px solid rgba(0, 255, 213, 0.25);
+
+      color: #00ffd5;
+      font-size: 13px;
+      margin-bottom: 25px;
+
+      box-shadow: 0 0 30px rgba(0, 255, 213, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(50px, 9vw, 110px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+
+      background: linear-gradient(
+        120deg,
+        #ffffff,
+        #9fffee,
+        #8b7cff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: shine 5s linear infinite;
+      background-size: 200% auto;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin-top: 30px;
+
+      color: #9b9ba5;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .primary {
+      color: #050509;
+      background: #00ffd5;
+      box-shadow: 0 0 30px rgba(0, 255, 213, 0.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 45px rgba(0, 255, 213, 0.45);
+    }
+
+    .secondary {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .secondary:hover {
+      background: rgba(255, 255, 255, 0.09);
+      transform: translateY(-4px);
+    }
+
+    /* Cards */
+    .cards {
+      width: 90%;
+      max-width: 1100px;
+      margin: 20px auto 100px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 255, 213, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: rgba(0, 255, 213, 0.1);
+      border: 1px solid rgba(0, 255, 213, 0.15);
+
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #858590;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* Stats */
+    .stats {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 80px;
+
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+
+      padding: 35px;
+
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+
+      backdrop-filter: blur(15px);
+    }
+
+    .stat h2 {
+      font-size: 35px;
+      color: #00ffd5;
+    }
+
+    .stat p {
+      color: #777;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+      font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Mobile */
+    @media (max-width: 750px) {
+
+      nav {
+        width: 92%;
+      }
+
+      nav div:last-child {
+        display: none;
+      }
+
+      h1 {
+        font-size: 60px;
+        letter-spacing: -3px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      V<span>GS</span>
+    </div>
+
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+
+  <!-- Hero -->
+  <section class="hero">
+
+    <div class="badge">
+      ✦ BUILDING THE FUTURE
+    </div>
+
+    <h1>
+      Think.<br>
+      Build.<br>
+      Create.
+    </h1>
+
+    <p class="subtitle">
+      A digital space for ideas, experiments, engineering,
+      technology and everything that happens when curiosity
+      refuses to sit quietly.
+    </p>
+
+    <div class="buttons">
+      <a href="#" class="btn primary">
+        Explore Projects
+      </a>
+
+      <a href="#" class="btn secondary">
+        View GitHub
+      </a>
+    </div>
+
+  </section>
+
+
+  <!-- Feature Cards -->
+  <section class="cards">
+
+    <div class="card">
+      <div class="icon">⚡</div>
+
+      <h3>Engineering</h3>
+
+      <p>
+        Electronics, embedded systems, VLSI,
+        communication systems and hardware
+        experiments turned into working systems.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <div class="icon">◈</div>
+
+      <h3>Innovation</h3>
+
+      <p>
+        Turning ridiculous-looking ideas into
+        prototypes, experiments and occasionally
+        something that actually works.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <div class="icon">⌘</div>
+
+      <h3>Technology</h3>
+
+      <p>
+        Software, AI, web development, Git,
+        automation and the endless ecosystem
+        humans have created to avoid doing things manually.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- Stats -->
+  <section class="stats">
+
+    <div class="stat">
+      <h2>12+</h2>
+      <p>Projects</p>
+    </div>
+
+    <div class="stat">
+      <h2>08</h2>
+      <p>Technologies</p>
+    </div>
+
+    <div class="stat">
+      <h2>∞</h2>
+      <p>Ideas</p>
+    </div>
+
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    Built with HTML & CSS · © 2026 VGS
+  </footer>
+
 </body>
 </html>
